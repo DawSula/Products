@@ -1,0 +1,36 @@
+{% extends "Layouts/main.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-center mt-5">
+    <div class="card mt-5" style="width: 50rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{product.title}}</h5>
+            <h6 class="card-subtitle mb-4 text-muted mt-4">
+                Kategoria:
+                {% if product.name == NULL %}
+                brak
+                {% endif %}
+                {{product.name}}</h6>
+            <p class="card-text">Opis: {{product.description}}</p>
+            <p class="card-text mb-4">Status:
+                {% if product.status %}
+                Dostępny
+                {% else %}
+                Niedostępny
+                {% endif %}</p>
+            <div class="d-flex justify-content-start mt-3">
+                <a href="/edit/{{product.id}}" class="card-link btn btn-primary me-2" role="button">Edytuj</a>
+                <form action="/DeleteProduct" method="POST" >
+                    <input type="hidden" name="id" value="{{product.id}}">
+                    <button class="btn btn-danger card-link" type="submit">Usuń</button>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

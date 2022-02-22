@@ -1,0 +1,38 @@
+{% extends "Layouts/main.html" %}
+
+{% block content %}
+
+<form class="mt-5" method="POST" action="/update">
+    <input type="hidden" name="productId" value="{{product.id}}">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nazwa produktu</label>
+        <input type="text" class="form-control" name="name" id="exampleInputEmail1" value="{{product.title}}" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Opis</label>
+        <textarea class="form-control" name="description" rows="3">{{product.description}}</textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Status</label>
+        <select class="form-select form-select-sm" name="status" aria-label=".form-select-sm example">
+
+            <option value="1" {% if product.status == 1 %} selected {% endif %}>Dostępny</option>
+            <option value="0" {% if product.status == 0 %} selected {% endif %}>Niedostępny</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Kategoria</label>
+        <select class="form-select form-select-sm" name="category" aria-label=".form-select-sm example">
+            <option selected value="">Wybierz kategorię produktu</option>
+            {% for category in categories %}
+            <option  value='{{category.id}}' {% if product.productCategory == category.id %} selected {% endif %}>{{category.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Edytuj</button>
+</form>
+
+
+{% endblock content %}

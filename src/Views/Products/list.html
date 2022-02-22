@@ -1,0 +1,40 @@
+{% extends "Layouts/main.html" %}
+
+{% block content %}
+
+
+<table class="table mt-5">
+
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nazwa</th>
+        <th scope="col">Kategoria</th>
+        <th scope="col">Status</th>
+        <th scope="col">Szczegóły</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
+    <tr>
+        <th scope="row">{{ loop.index }}</th>
+        <td>{{product.title}}</td>
+        <td>
+            {% if product.name == NULL %}
+            ----
+            {% endif %}
+            {{product.name}}
+        </td>
+        <td>
+            {% if product.status %}
+            Dostępny
+            {% else %}
+            Niedostępny
+            {% endif %}
+        </td>
+        <td><a href="/{{product.id}}">AKCJA</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

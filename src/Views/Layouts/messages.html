@@ -1,0 +1,76 @@
+{% if _get.before is not empty %}
+
+
+    <div class="text-center">
+        {% if _get.before == 'deleted' %}
+
+        <div class="alert alert-primary" role="alert">
+            Usunięto produkt
+        </div>
+        {% elseif _get.before == 'created' %}
+        <div class="alert alert-primary" role="alert">
+            Dodano produkt
+        </div>
+        {% elseif _get.before == 'updated' %}
+        <div class="alert alert-primary" role="alert">
+            Zaktualizowano produkt
+        </div>
+        {% elseif _get.before == 'regSuccess' %}
+        <div class="alert alert-primary" role="alert">
+            Zarejestrowano
+        </div>
+        {% elseif _get.before == 'logSuccess' %}
+        <div class="alert alert-primary" role="alert">
+            Zalogowano
+        </div>
+
+
+
+
+
+
+        {% elseif _get.before == 'categoryError' %}
+        <div class="alert alert-danger" role="alert">
+            Wybrana kategoria nie istnieje
+        </div>
+        {% elseif _get.before == 'emptyError' %}
+        <div class="alert alert-danger" role="alert">
+            Pola nazwa produktu oraz Opis muszą być wypełnione
+        </div>
+        {% elseif _get.before == 'urlError' %}
+        <div class="alert alert-danger" role="alert">
+            Podany adres nie istnieje
+        </div>
+        {% elseif _get.before == 'keysError' %}
+        <div class="alert alert-danger" role="alert">
+            Użyto niepożądych znaków
+        </div>
+        {% elseif _get.before == 'nameLengthError' %}
+        <div class="alert alert-danger" role="alert">
+            Długość nazwy: 4-30 znaków
+        </div>
+        {% elseif _get.before == 'descLengthError' %}
+        <div class="alert alert-danger" role="alert">
+            Długość opisu: 4 - 350 znaków
+        </div>
+        {% elseif _get.before == 'someEmpty' %}
+        <div class="alert alert-danger" role="alert">
+            Wszystkie pola muszą być wypełnione
+        </div>
+        {% elseif _get.before == 'diffPass' %}
+        <div class="alert alert-danger" role="alert">
+            Różne hasła
+        </div>
+        {% elseif _get.before == 'weakPass' %}
+        <div class="alert alert-danger" role="alert">
+            Hasło musi zawierać dużą literę, cyfrę oraz przynajmniej 6 znaków
+        </div>
+        {% elseif _get.before == 'incorrectData' %}
+        <div class="alert alert-danger" role="alert">
+            Niepoprawne dane logowania
+        </div>
+
+        {% endif %}
+
+    </div>
+{% endif %}
